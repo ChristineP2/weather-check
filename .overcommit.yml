@@ -1,0 +1,125 @@
+CommitMsg:
+  CapitalizedSubject:
+    enabled: false
+  EmptyMessage:
+    enabled: true
+  GerritChangeId:
+    enabled: false
+  HardTabs:
+    enabled: false
+  MessageFormat:
+    enabled: true
+    expected_pattern_message: ':gitmoji: <XXXX-1111>: <Message Subject>'
+    pattern: ':.*?: (([A-z].+)\-([0-9].+):.+)|(Merge .+)'
+    sample_message: ':sparkles: TICKET-123: Add overcommit to project'
+  RussianNovel:
+    enabled: true
+  SingleLineSubject:
+    enabled: true
+  SpellCheck:
+    enabled: false
+  TextWidth:
+    enabled: false
+  TrailingPeriod:
+    enabled: false
+PreCommit:
+  AuthorEmail:
+    enabled: true
+  AuthorName:
+    enabled: true
+  BrokenSymLinks:
+    enabled: true
+  BundleCheck:
+    enabled: true
+  CaseConflicts:
+    enabled: true
+  ErbLint:
+    command:
+      - bundle
+      - exec
+      - erblint
+    enabled: true
+    include: '**/*.html.erb'
+    required_executable: bundle
+  EsLint:
+    command:
+      - npx
+      - --no-install
+      - eslint
+      - -f
+      - compact
+    enabled: true
+    include:
+      - app/assets/**/*.js
+      - app/assets/**/*.jsx
+      - app/components/**/*.js
+      - app/components/**/*.jsx
+      - app/frontend/**/*.js
+      - app/frontend/**/*.jsx
+      - app/javascript/**/*.js
+      - app/javascript/**/*.jsx
+    required_executable: npx
+  ForbiddenBranches:
+    branch_patterns:
+    - main
+    enabled: true
+  LocalPathsInGemfile:
+    enabled: true
+  MergeConflicts:
+    enabled: true
+  RailsSchemaUpToDate:
+    enabled: true
+  Rubocop:
+    command:
+      - bundle
+      - exec
+      - rubocop
+    enabled: true
+    on_warn: fail
+    required_executable: bundle
+  Stylelint:
+    command:
+      - npx
+      - --no-install
+      - stylelint
+    enabled: true
+    include:
+      - app/assets/**/*.css
+      - app/assets/**/*.scss
+      - app/components/**/*.css
+      - app/components/**/*.scss
+      - app/frontend/**/*.css
+      - app/frontend/**/*.scss
+      - app/javascript/**/*.css
+      - app/javascript/**/*.scss
+    required_executable: npx
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+    - '**/db/structure.sql'
+PrePush:
+  Brakeman:
+    command:
+      - bundle
+      - exec
+      - brakeman
+    enabled: true
+    required_executable: bundle
+  Cucumber:
+    command:
+      - bundle
+      - exec
+      - cucumber
+    enabled: true
+    required_executable: bundle
+  RSpec:
+    command:
+      - bundle
+      - exec
+      - rspec
+    enabled: true
+    required_executable: bundle
+PrepareCommitMsg:
+  CustomScript:
+    enabled: true
+    required_executable: bin/hooks/prepare-commit-msg

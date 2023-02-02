@@ -1,0 +1,25 @@
+html {
+  font-size: 16px;
+  height: 100%
+}
+
+body {
+  color: #000;
+  font-family: Spectral, serif;
+  background-color: #fff;
+  line-height: 1.7
+}
+
+svg {
+  height: 20px;
+  width: auto;
+  vertical-align: middle
+}
+
+svg:not(:root) {
+  overflow: hidden
+}
+
+[role=button] {
+  cursor: pointer
+}

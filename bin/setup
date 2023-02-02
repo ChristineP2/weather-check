@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+def setup!
+  within_project_root do
+    run  'bundle check > /dev/null 2>&1 || bundle install'
+    run  'pnpm install' if File.exist?('pnpm-lock.yaml')
+    copy 'example.env', '.env.development'
+    feel_committed if overcommit_present?
+    test_local_env_contains_required_keys
+    run 'bundle exec rake db:drop RAILS_ENV=test'
+    run 'bundle exec rake db:create RAILS_ENV=test'
+    run 'bundle exec rake db:schema:load RAILS_ENV=test'
+    run 'SKIP_TEST_DATABASE=1  bin/rails tmp:create db:prepare db:seed'
+  end
+end
+
+require 'bundler/inline'
+require 'fileutils'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem 'highline'
+end
+
+def feel_committed
+  run 'overcommit --install'
+  run 'overcommit --sign'
+  run 'overcommit --sign pre-push'
+  run 'overcommit --sign prepare-commit-msg'
+end
+
+def within_project_root(&)
+  Dir.chdir(File.expand_path('..', __dir__), &)
+end
+
+def overcommit_present?
+  with_clean_bundler_env do
+    system('which overcommit > /dev/null 2>&1') && system('overcommit -v > /dev/null 2>&1')
+  end
+end
+
+def run(command)
+  log(:blue, "run  #{command}")
+  with_clean_bundler_env do
+    system(command, exception: true)
+  end
+end
+
+def with_clean_bundler_env(&)
+  return yield unless defined?(Bundler)
+
+  Bundler.with_unbundled_env(&)
+end
+
+def copy(source, dest)
+  return if File.exist?(dest)
+
+  log(:magenta, "copy #{source} → #{dest}")
+  FileUtils.cp(source, dest)
+end
+
+def test_local_env_contains_required_keys
+  keys = ->(f) { File.readlines(f).filter_map { |l| l[/^([^#\s][^=\s]*)/, 1] } }
+
+  log(:yellow, 'test .env.development contents')
+  missing = keys['example.env'] - keys['.env.development']
+  return unless missing.any?
+
+  die("Your .env.development file is missing #{missing.join(', ')}")
+end
+
+def log(color, message, out = $stdout)
+  out.puts(message.sub(/^(\S*)/) { HighLine::String.new(Regexp.last_match(1)).public_send(color) })
+end
+
+def die(message)
+  puts
+  log(:red, "FAIL #{message}", $stderr)
+  exit(1)
+end
+
+setup!
