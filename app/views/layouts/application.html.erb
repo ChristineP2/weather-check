@@ -1,66 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>    <!-- Weather Check <%= Rails.application.config.version %> (<%= l(Rails.application.config.version_time) %>) -->
-    <%= capybara_lockstep if defined?(Capybara::Lockstep) %>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%# Specifies the default name of home screen bookmark in iOS %>
-    <meta name="apple-mobile-web-app-title" content="<%= app_title %>">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= vite_asset_path('images/favicon/apple-touch-icon.png') %>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= vite_asset_path('images/favicon/images/favicon-32x32.png') %>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= vite_asset_path('images/favicon/images/favicon-16x16.png') %>">
-    <link rel="manifest" href="<%= vite_asset_path('images/favicon/site.webmanifest') %>">
-    <link rel="mask-icon" href="<%= vite_asset_path('images/favicon/safari-pinned-tab.svg') %>" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <title>
-      <%= plain_title %>
-    </title>
+<head>    <!-- Weather Check <%= Rails.application.config.version %> (<%= l(Rails.application.config.version_time) %>) -->
+  <%= capybara_lockstep if defined?(Capybara::Lockstep) %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%# Specifies the default name of home screen bookmark in iOS %>
+  <meta name="apple-mobile-web-app-title" content="<%= app_title %>">
+  <link rel="icon" type="image/x-icon" href="<%= vite_asset_path('images/favicon/favicon.ico') %>">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= vite_asset_path('images/favicon/apple-touch-icon.png') %>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= vite_asset_path('images/favicon/favicon-32x32.png') %>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= vite_asset_path('images/favicon/favicon-16x16.png') %>">
+  <link rel="manifest" href="<%= vite_asset_path('images/favicon/site.webmanifest') %>">
+  <link rel="mask-icon" href="<%= vite_asset_path('images/favicon/safari-pinned-tab.svg') %>" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+    <%= plain_title %>
+  </title>
 
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
+  <%= vite_client_tag %>
+  <%= vite_javascript_tag 'application' %>
+  <!--
+    If using a TypeScript entrypoint file:
+      vite_typescript_tag 'application'
 
-    <%= vite_client_tag %>
-    <%= vite_javascript_tag 'application' %>
-    <!--
-      If using a TypeScript entrypoint file:
-        vite_typescript_tag 'application'
+    If using a .jsx or .tsx entrypoint, add the extension:
+      vite_javascript_tag 'application.jsx'
 
-      If using a .jsx or .tsx entrypoint, add the extension:
-        vite_javascript_tag 'application.jsx'
+    Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+  -->
 
-      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
-    -->
-
-  </head>
-  <body class="has-navbar-fixed-top layout-documentation page-components">
-    <aside>
-      <%= render("layouts/a11y") %>
-    </aside>
-    <header>
-      <%= render("layouts/header_nav") %>
-    </header>
-    <main id="main">
-      <section>
-        <div class="container is-fluid">
-          <h1 class="title is-1 has-text-primary"><%= content_title %></h1>
-          <div class="ml-4 content">
-            <%= sanitize(content_detail) %>
-          </div>
-        </div>
-      </section>
-      <% if flash %>
-        <details>
-          <%= render("layouts/flash") %>
-        </details>
-      <% end %>
-      <%= yield %>
-    </main>
-    <footer>
-      <%= render("layouts/footer_nav") %>
-    </footer>
-  </body>
+</head>
+<body class="has-navbar-fixed-top layout-documentation page-components">
+<aside>
+  <%= render('layouts/a11y') %>
+</aside>
+<header>
+  <%= render('layouts/header_nav') %>
+</header>
+<main id="main-content" class="is-fullheight">
+  <section>
+    <div class="container">
+      <h1 class="title is-1 has-text-primary"><%= content_title %></h1>
+      <div class="ml-4 content">
+        <%= sanitize(content_detail) %>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <% if flash %>
+      <details>
+        <%= render('layouts/flash') %>
+      </details>
+    <% end %>
+    <%= yield %>
+  </div>
+</main>
+<footer class="has-text-centered is-flex-align-items-flex-end mt-auto">
+  <%= render('layouts/footer_nav') %>
+</footer>
+</body>
 
 </html>

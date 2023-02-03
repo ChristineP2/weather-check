@@ -45,7 +45,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 19.5.0
-
           cache: pnpm
       - name: Install packages
         run: |
@@ -58,6 +57,14 @@ jobs:
           TEST_DB_USR: postgres
           TEST_DB_PWD: postgres
           RAILS_ENV: test
+        run: |
+          bundle exec rspec
+      - name: Lint it!
+        run: |
+          bin bundle-audit
+          bin brakeman
+          bin erblint
+          bin rubocop
       - name: Rake it!
         run: |
           bin rake

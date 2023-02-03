@@ -21,7 +21,9 @@ module Nav
 
         list << content_tag(:li, tag_for(item))
 
-        list.concat(a_tags(item.sub_navigation)) if include_sub_navigation?(item)
+        if include_sub_navigation?(item)
+          list.concat(a_tags(item.sub_navigation))
+        end
       end
     end
   end

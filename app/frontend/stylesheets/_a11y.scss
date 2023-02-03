@@ -1,35 +1,30 @@
-@import "bulma/bulma.sass";
-@import "themes/darkly_variables";
-
 /* stylelint-disable no-descending-specificity */
 
-#skip-to-content-link a
-{
-  position:absolute;
-  left:-10000px;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
+#skip-to-content-link a {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 #skip-to-content-link a:focus,
-#skip-to-content-link a:active
-{
+#skip-to-content-link a:active {
   color: #fff;
-  background-color:#000;
+  background-color: #000;
   left: auto;
   top: auto;
   width: 30%;
   height: auto;
-  overflow:auto;
+  overflow: auto;
   margin: auto;
-  padding:5px;
+  padding: 5px;
   border-radius: 15px;
-  border:4px solid yellow;
-  text-align:center;
-  font-size:1.2em;
-  z-index:999;
+  border: 4px solid yellow;
+  text-align: center;
+  font-size: 1.2em;
+  z-index: 999;
 }
 
 
@@ -59,10 +54,10 @@ body.font-family-opendyslexic {
 }
 
 body a:focus,
- body input[type=text]:focus,
- body input[type=submit]:focus,
- body textarea:focus,
- body *:focus {
+body input[type=text]:focus,
+body input[type=submit]:focus,
+body textarea:focus,
+body *:focus {
   outline: 2px dotted $red;
   outline-offset: 0
 }
@@ -101,7 +96,7 @@ body a:focus,
 }
 
 .open-a11y,
- #main-content .a11y-settings li button {
+#main-content .a11y-settings li button {
   position: relative;
   background: $white;
   color: $black;
@@ -120,7 +115,7 @@ body a:focus,
 }
 
 #main-content .a11y-settings li button:hover,
- #main-content .a11y-settings li button:focus {
+#main-content .a11y-settings li button:focus {
   background: $black
 }
 
@@ -130,8 +125,6 @@ body a:focus,
   top: 17%;
   width: 400px;
   z-index: 70;
-  transition: left .4s;
-  transition: left .4s;
   transition: left .4s
 }
 
@@ -174,17 +167,17 @@ body.font-readable {
 }
 
 body.font-readable .button,
- body.font-readable button,
- body.font-readable input[type=submit],
- body.font-readable input[type=button],
- body.font-readable input[type=reset],
- body.font-readable .page-header > h1,
- body.font-readable .page-header > h2,
- body.font-readable .page-header > h3,
- body.font-readable .page-header > h4,
- body.font-readable .page-header > h5,
- body.font-readable .page-header > h6,
- body.font-readable .page-header > p {
+body.font-readable button,
+body.font-readable input[type=submit],
+body.font-readable input[type=button],
+body.font-readable input[type=reset],
+body.font-readable .page-header > h1,
+body.font-readable .page-header > h2,
+body.font-readable .page-header > h3,
+body.font-readable .page-header > h4,
+body.font-readable .page-header > h5,
+body.font-readable .page-header > h6,
+body.font-readable .page-header > p {
   letter-spacing: .12em;
   word-spacing: .16em
 }
@@ -195,85 +188,85 @@ body.link-underline a svg {
 }
 
 body.link-underline a,
- body.link-underline a * {
+body.link-underline a * {
   text-decoration: underline !important
 }
 
 .fsize70,
- .fsize70 #main-content .a11y-settings,
- .fsize70 .menu ul li a,
- .fsize70 #main-nav .main-content-menu .nav-menu > .menu-item > a,
- .fsize70 select,
- .fsize70 textarea,
- .fsize70 input,
- .fsize70 button,
- .fsize70 .btn,
- .fsize70 .button {
+.fsize70 #main-content .a11y-settings,
+.fsize70 .menu ul li a,
+.fsize70 #main-nav .main-content-menu .nav-menu > .menu-item > a,
+.fsize70 select,
+.fsize70 textarea,
+.fsize70 input,
+.fsize70 button,
+.fsize70 .btn,
+.fsize70 .button {
   font-size: 11px
 }
 
 .fsize80,
- .fsize80 #main-content .a11y-settings,
- .fsize80 .menu ul li a,
- .fsize80 #main-nav .main-content-menu .nav-menu > .menu-item > a,
- .fsize80 select,
- .fsize80 textarea,
- .fsize80 input,
- .fsize80 button,
- .fsize80 .btn,
- .fsize80 .button {
+.fsize80 #main-content .a11y-settings,
+.fsize80 .menu ul li a,
+.fsize80 #main-nav .main-content-menu .nav-menu > .menu-item > a,
+.fsize80 select,
+.fsize80 textarea,
+.fsize80 input,
+.fsize80 button,
+.fsize80 .btn,
+.fsize80 .button {
   font-size: 13px
 }
 
 .fsize90,
- .fsize90 #main-content .a11y-settings,
- .fsize90 .menu ul li a,
- .fsize90 #main-nav .main-content-menu .nav-menu > .menu-item > a,
- .fsize90 select,
- .fsize90 textarea,
- .fsize90 input,
- .fsize90 button,
- .fsize90 .btn,
- .fsize90 .button {
+.fsize90 #main-content .a11y-settings,
+.fsize90 .menu ul li a,
+.fsize90 #main-nav .main-content-menu .nav-menu > .menu-item > a,
+.fsize90 select,
+.fsize90 textarea,
+.fsize90 input,
+.fsize90 button,
+.fsize90 .btn,
+.fsize90 .button {
   font-size: 15px
 }
 
 .fsize110,
- .fsize110 #main-content .a11y-settings,
- .fsize110 .menu ul li a,
- .fsize110 #main-nav .main-content-menu .nav-menu > .menu-item > a,
- .fsize110 select,
- .fsize110 textarea,
- .fsize110 input,
- .fsize110 button,
- .fsize110 .btn,
- .fsize110 .button {
+.fsize110 #main-content .a11y-settings,
+.fsize110 .menu ul li a,
+.fsize110 #main-nav .main-content-menu .nav-menu > .menu-item > a,
+.fsize110 select,
+.fsize110 textarea,
+.fsize110 input,
+.fsize110 button,
+.fsize110 .btn,
+.fsize110 .button {
   font-size: 18px
 }
 
 .fsize120,
- .fsize120 #main-content .a11y-settings,
- .fsize120 .menu ul li a,
- .fsize120 #main-nav .main-content-menu .nav-menu > .menu-item > a,
- .fsize120 select,
- .fsize120 textarea,
- .fsize120 input,
- .fsize120 button,
- .fsize120 .btn,
- .fsize120 .button {
+.fsize120 #main-content .a11y-settings,
+.fsize120 .menu ul li a,
+.fsize120 #main-nav .main-content-menu .nav-menu > .menu-item > a,
+.fsize120 select,
+.fsize120 textarea,
+.fsize120 input,
+.fsize120 button,
+.fsize120 .btn,
+.fsize120 .button {
   font-size: 19px
 }
 
 .fsize130,
- .fsize130 #main-content .a11y-settings,
- .fsize130 .menu ul li a,
- .fsize130 #main-nav .main-content-menu .nav-menu > .menu-item > a,
- .fsize130 select,
- .fsize130 textarea,
- .fsize130 input,
- .fsize130 button,
- .fsize130 .btn,
- .fsize130 .button {
+.fsize130 #main-content .a11y-settings,
+.fsize130 .menu ul li a,
+.fsize130 #main-nav .main-content-menu .nav-menu > .menu-item > a,
+.fsize130 select,
+.fsize130 textarea,
+.fsize130 input,
+.fsize130 button,
+.fsize130 .btn,
+.fsize130 .button {
   font-size: 21px
 }
 
@@ -316,7 +309,7 @@ body.link-underline a,
 }
 
 .skip-menu ul.menu > li > a:hover,
- .skip-menu ul.menu > li > a:focus {
+.skip-menu ul.menu > li > a:focus {
   color: $black;
   background: $white
 }
@@ -328,13 +321,14 @@ body.link-underline a,
 }
 
 @media reader,
- speech,
- aural {
+speech,
+aural {
   *::before,
- *::after {
+  *::after {
     display: none !important;
     content: "" !important;
     visibility: hidden
   }
 }
+
 /* stylelint-enable no-descending-specificity */

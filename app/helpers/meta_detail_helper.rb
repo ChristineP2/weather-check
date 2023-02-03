@@ -4,10 +4,9 @@
 module MetaDetailHelper
   include AbstractController::Translation
 
-    def app_title
-       "Weather Check"
-    end
-
+  def app_title
+    'WeatherCheck'
+  end
 
   def plain_title
     [base_title, app_title].compact.join(' ~ ')

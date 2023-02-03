@@ -2,7 +2,6 @@
 @use "sass:list";
 
 
-
 hr {
   height: $border-width;
 }
@@ -16,6 +15,10 @@ a {
   transition: all 200ms ease;
 }
 
+.title {
+  font-family: $family-serif;
+}
+
 .button {
   transition: all 200ms ease;
   border-width: $border-width;
@@ -27,6 +30,7 @@ a {
   &:focus {
     box-shadow: 0 0 0 2px rgba($button-focus-border-color, 0.5);
   }
+
   @each $name, $pair in $colors {
     $color: list.nth($pair, 1);
     $color-invert: list.nth($pair, 2);

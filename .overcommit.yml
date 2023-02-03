@@ -10,7 +10,7 @@ CommitMsg:
   MessageFormat:
     enabled: true
     expected_pattern_message: ':gitmoji: <XXXX-1111>: <Message Subject>'
-    pattern: ':.*?: (([A-z].+)\-([0-9].+):.+)|(Merge .+)'
+    pattern: ':.*?: (([A-z].+)\-(\d+):.+)|(Merge .+)'
     sample_message: ':sparkles: TICKET-123: Add overcommit to project'
   RussianNovel:
     enabled: true
@@ -61,7 +61,7 @@ PreCommit:
     required_executable: npx
   ForbiddenBranches:
     branch_patterns:
-    - main
+      - main
     enabled: true
   LocalPathsInGemfile:
     enabled: true
@@ -96,7 +96,7 @@ PreCommit:
   TrailingWhitespace:
     enabled: true
     exclude:
-    - '**/db/structure.sql'
+      - '**/db/structure.sql'
 PrePush:
   Brakeman:
     command:
@@ -110,6 +110,7 @@ PrePush:
       - bundle
       - exec
       - cucumber
+      - 'features/'
     enabled: true
     required_executable: bundle
   RSpec:
@@ -122,4 +123,4 @@ PrePush:
 PrepareCommitMsg:
   CustomScript:
     enabled: true
-    required_executable: bin/hooks/prepare-commit-msg
+    required_executable: bin/prepare-commit-msg
