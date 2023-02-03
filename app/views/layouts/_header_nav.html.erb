@@ -1,7 +1,7 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-     LOGO
+    <a id="logo" class="navbar-item" href="/">
+      <%= app_title %>
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -13,7 +13,7 @@
 
   <div id="header_nav" class="navbar-menu">
     <div class="navbar-start">
-      <%= sanitize(render_navigation renderer: :bulma_main_nav, level: 1..Float::INFINITY, expand_all: true) %>
+      <%= sanitize(render_navigation(renderer: :bulma_main_nav, level: 1..Float::INFINITY, expand_all: true)) %>
     </div>
 
     <div class="navbar-end">
@@ -24,7 +24,7 @@
           </a>
           <a class="button is-light">
             Log in
-          </a>home
+          </a>
         </div>
       </div>
     </div>

@@ -15,51 +15,54 @@ export default defineConfig({
   manifest: true,
   plugins: [
     inject({
-      $: 'jquery',
-      jQuery: 'jquery',
+      $: "jquery",
+      jQuery: "jquery",
     }),
-    FullReload(['config/routes.rb', 'app/views/**/*'], { delay: 200 }),
+    FullReload(["config/routes.rb", "app/views/**/*"], { delay: 200 }),
     GzipPlugin(),
     RubyPlugin(),
     ViteFonts({
       custom: {
-        display: 'swap',
+        display: "swap",
         families: [
           {
-            name: 'opendyslexic',
-            local: 'opendyslexic',
-            src: '~/fonts/OpenDyslexic3.woff2',
+            name: "opendyslexic",
+            local: "opendyslexic",
+            src: "~/fonts/OpenDyslexic3.woff2",
           },
           {
-            name: 'tiresias',
-            local: 'tiresias',
-            src: '~/fonts/Tiresias.woff2', // Visually Impaired
+            name: "tiresias",
+            local: "tiresias",
+            src: "~/fonts/Tiresias.woff2", // Visually Impaired
           },
         ],
-        injectTo: 'head',
+        injectTo: "head",
       },
       google: {
-        display: 'swap',
+        display: "swap",
 
         families: [
           {
-            name: 'Andika',
-            styles: 'ital,wght@0,400;1,200'
+            name: "Andika",
+            styles: "ital,wght@0,400;1,200",
           },
           {
-            name: 'Inter',
-            styles: 'ital,wght@0,400;1,200'
+            name: "Inter",
+            styles: "ital,wght@0,400;1,200",
           },
           {
-            name: 'Open Sans',
-            styles: 'ital,wght@0,400;1,200'
+            name: "Open Sans",
+            styles: "ital,wght@0,400;1,200",
           },
           {
-            name: 'Spectral',
-            styles: 'ital,wght@0,400;1,200'
+            name: "Spectral",
+            styles: "ital,wght@0,400;1,200",
+          },
+          {
+            name: "Style Script",
           },
         ],
-        injectTo: 'head',
+        injectTo: "head",
       },
     }),
     ViteReact(),
@@ -68,16 +71,16 @@ export default defineConfig({
     alias: [
       {
         find: "@/lib",
-        replacement: path.resolve(__dirname, "./app/frontend/components/lib/")
+        replacement: path.resolve(__dirname, "./app/frontend/components/lib/"),
       },
       {
         find: "@/components",
-        replacement: path.resolve(__dirname, "./app/frontend/components/")
+        replacement: path.resolve(__dirname, "./app/frontend/components/"),
       },
       {
         find: "@/entrypoints",
-        replacement: path.resolve(__dirname, "./app/frontend/entrypoints")
-      }
-    ]
+        replacement: path.resolve(__dirname, "./app/frontend/entrypoints"),
+      },
+    ],
   },
-})
+});

@@ -8,13 +8,27 @@ require:
 AllCops:
   TargetRubyVersion: 3.1
   NewCops: enable
+  Exclude:
+    - .spec
+    - 'bin/**/*'
+    - 'db/**/*'
+    - Rakefile
 
 Layout/LineLength:
   Max: 80
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/**/*'
 
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Exclude:
     - 'Rakefile'
+    - 'config/initializers/*'
     - '**/*.rake'
     - 'spec/**/*.rb'
+
+Style/Documentation:
+  Enabled: false
