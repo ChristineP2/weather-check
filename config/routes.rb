@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
   # https://js-from-routes.netlify.app/guide/#getting-started
 
-  # Use export: true to specify which routes should be taken into account when generating JS.
-  mount Sidekiq::Web => '/sidekiq' if defined?(Sidekiq) # monitoring console
-  resource :home, only: %i[show]
-  root 'home#show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Use export: true to specify which routes should be taken into account when generating JS.
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resource :weather_location, only: %i[show]
+  root 'weather_locations#show'
 end
