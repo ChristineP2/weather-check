@@ -2,8 +2,8 @@ name: "Quality Control"
 on:
   pull_request:
 jobs:
-  unit-ruby:
-    name: "Server-side Unit Tests"
+  quality_checks:
+    name: "Quality Checks
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -15,17 +15,17 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
         ports: [ "5432:5432" ]
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      redis:
-        image: redis
-        ports:
-          - 6379:6379
-        options: --entrypoint redis-server
+      # Set health checks to wait until postgres has started
+            options: >-
+              --health-cmd pg_isready
+              --health-interval 10s
+              --health-timeout 5s
+              --health-retries 5
+            redis:
+              image: redis
+              ports:
+                - 6379:6379
+              options: --entrypoint redis-server
     strategy:
       fail-fast: false
     steps:
@@ -42,10 +42,13 @@ jobs:
         run: |
           sudo apt-get -yqq install libpq-dev
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 19.5.0
-          cache: pnpm
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
       - name: Install packages
         run: |
           pnpm install

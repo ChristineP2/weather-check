@@ -5,25 +5,27 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
-gem 'bcrypt'
-gem 'bootsnap'
-gem 'devise'
-gem 'pg'
-gem 'puma'
+gem 'bootsnap', '~> 1.16.0'
+gem 'burnish_rails',
+    git: 'https://github.com/ChristineP2/burnish_rails',
+    ref: 'b6dc2cc'
+gem 'pg', '~> 1.4.5'
+gem 'puma', '~> 6.0.2'
 gem 'rails', '~> 7.0.4'
-gem 'sidekiq'
-gem 'simple_form'
-gem 'simple-navigation'
-gem 'vite_rails'
+gem 'simple_form', '~> 5.2.0'
+gem 'simple-navigation', '~> 4.4.0'
+gem 'validates_zipcode', '~> 0.5.2'
+gem 'vite_rails', '~> 3.0.13'
+gem 'zip-codes'
 
 group :development do
   gem 'amazing_print'
   gem 'annotate'
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
-  gem 'burnish_rails', git: 'https://github.com/ChristineP2/burnish_rails'
   gem 'erb_lint', require: false
   gem 'letter_opener'
+  gem 'overcommit'
   gem 'rubocop'
   gem 'rubocop-ast'
   gem 'rubocop-github'
