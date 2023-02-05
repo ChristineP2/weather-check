@@ -4,7 +4,8 @@
     "lint": "npm-run-all -c lint:*",
     "lint:js": "eslint 'app/{components,frontend,javascript}/**/*.{js,jsx}'",
     "lint:css": "stylelint 'app/{components,frontend,assets/stylesheets}/**/*.{css,scss}'",
-    "start": "concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0' 'bin/vite dev'"
+    "start": "concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0' 'bin/vite dev'",
+    "vite": "bin/vite dev"
   },
   "private": "true",
   "devDependencies": {
