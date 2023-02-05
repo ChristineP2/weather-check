@@ -2,6 +2,8 @@
 
 require 'dotenv/load'
 require 'simplecov'
+require 'webmock/rspec'
+
 SimpleCov.start 'rails' do
   add_filter 'spec/'
   add_filter '.github/'

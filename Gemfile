@@ -9,6 +9,7 @@ gem 'bootsnap', '~> 1.16.0'
 gem 'burnish_rails',
     git: 'https://github.com/ChristineP2/burnish_rails',
     ref: 'b6dc2cc'
+gem 'faraday', '~> 2.7.4'
 gem 'pg', '~> 1.4.5'
 gem 'puma', '~> 6.0.2'
 gem 'rails', '~> 7.0.4'
@@ -24,6 +25,7 @@ group :development do
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
   gem 'erb_lint', require: false
+  gem 'foreman'
   gem 'letter_opener'
   gem 'overcommit'
   gem 'rubocop'
@@ -42,7 +44,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'js_from_routes'
-  gem 'launchy'
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -59,4 +60,5 @@ group :test do
   gem 'database_cleaner-redis'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'webmock'
 end
