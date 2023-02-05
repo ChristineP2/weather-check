@@ -6,11 +6,20 @@ default: &default
 development:
   <<: *default
   database: weather_check_development
+  host: <% ENV['DEV_DB_HOST']  || 'localhost' %>
+  username: <% ENV['DEV_DB_USR'] %>
+  password: <% ENV['DEV_DB_PWD'] %>
 
 test:
   <<: *default
   database: weather_check_test
+  host: <% ENV['TEST_DB_HOST']  || 'localhost' %>
+  username: <% ENV['TEST_DB_USR'] %>
+  password: <% ENV['TEST_DB_PWD'] %>
 
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
+  host: <% ENV['PROD_DB_HOST']  || 'localhost' %>
+  username: <% ENV['PROD_DB_USR'] %>
+  password: <% ENV['PROD_DB_PWD'] %>
