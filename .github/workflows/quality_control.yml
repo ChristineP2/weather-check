@@ -3,7 +3,7 @@ on:
   pull_request:
 jobs:
   quality_checks:
-    name: "Quality Checks
+    name: "Quality Checks"
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -15,17 +15,12 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
         ports: [ "5432:5432" ]
-      # Set health checks to wait until postgres has started
-            options: >-
-              --health-cmd pg_isready
-              --health-interval 10s
-              --health-timeout 5s
-              --health-retries 5
-            redis:
-              image: redis
-              ports:
-                - 6379:6379
-              options: --entrypoint redis-server
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     strategy:
       fail-fast: false
     steps:
@@ -45,14 +40,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 19.5.0
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6.0.2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
       - name: Install packages
         run: |
           pnpm install
           bundle install
+      - name: Lint it!
+        run: |
+          bundle exec bin/bundle-audit
+          bundle exec bin/brakeman
+          bundle exec bin/erblint --lint-all
+          bundle exec bin/rubocop
+          pnpm lint
+      - name: Cool as a Cucumber
+        run: |
+          bundle exec bin/cucumber
       - name: Run RSpec
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/weather_check_test
@@ -61,13 +64,6 @@ jobs:
           TEST_DB_PWD: postgres
           RAILS_ENV: test
         run: |
+          bundle exec bin/rails db:setup
+          bundle exec bin/rails db:migrate
           bundle exec rspec
-      - name: Lint it!
-        run: |
-          bin bundle-audit
-          bin brakeman
-          bin erblint
-          bin rubocop
-      - name: Rake it!
-        run: |
-          bin rake
