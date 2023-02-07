@@ -2,9 +2,6 @@
 
 @use "sass:color";
 
-////////////////////////////////////////////////
-// DARKLY
-////////////////////////////////////////////////
 $grey-lighter: #dbdee0;
 $grey-light: #8c9b9d;
 $grey: color.adjust($grey-light, $lightness: -18%);
@@ -12,13 +9,15 @@ $grey-dark: color.adjust($grey, $lightness: -18%);
 $grey-darker: color.adjust($grey, $lightness: -23%);
 $orange: #e67e22;
 $yellow: #f1b70e;
+$cyan: #64B5F7;
 $green: #2ecc71;
 $turquoise: #1abc9c;
 $blue: #3498db;
 $purple: #8e44ad;
 $red: #e74c3c;
 $white-ter: #ecf0f1;
-$primary: #375a7f !default;
+$primary: #A2BFD8 !default;
+$primary-invert: $grey-darker;
 $yellow-invert: #fff;
 $family-sans-serif: "Lato", -apple-system, blinkmacsystemfont, "Segoe UI",
 "Helvetica Neue", "Helvetica", "Arial", sans-serif;

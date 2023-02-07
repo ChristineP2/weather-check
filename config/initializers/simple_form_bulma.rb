@@ -129,7 +129,7 @@ SimpleForm.setup do |config|
   #    One Line Form (wraps if needed)
   # ##########################
   config.wrappers(
-    :horizontal_form, tag: 'div', class: 'field is-inline-block'
+    :horizontal_form, tag: 'div', class: 'field is-inline-block horizontal-form'
   ) do |a|
     a.use(:html5)
     a.use(:placeholder)
@@ -154,12 +154,12 @@ SimpleForm.setup do |config|
   # containing an input type as key and the wrapper that
   # will be used for all inputs with specified type.
   config.wrapper_mappings = {
-    boolean: :vertical_boolean,
-    select: :select2,
-    check_boxes: :vertical_collection,
-    file: :vertical_file,
+    boolean:       :vertical_boolean,
+    select:        :select2,
+    check_boxes:   :vertical_collection,
+    file:          :vertical_file,
     radio_buttons: :vertical_collection,
-    range: :vertical_range,
-    time: :vertical_multi_select
+    range:         :vertical_range,
+    time:          :vertical_multi_select
   }
 end

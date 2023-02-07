@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Use export: true to specify which routes should be taken into account when generating JS.
 
-  resource :weather_location, only: %i[show]
-  root 'weather_locations#show'
+  resource :home, controller: :home, only: %i[show]
+  root 'home#show'
 end

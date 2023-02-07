@@ -6,11 +6,10 @@ require_relative "config/application"
 Rails.application.load_tasks
 Rake::Task[:default].prerequisites.clear if Rake::Task.task_defined?(:default)
 task :default do
+  raise unless system("bin/rubocop -a") &
+    system("bin/brakeman") &
+    system("bin/erblint --lint-all -a ") &
+    system("pnpm lint")
   sh "bin/rails spec"
   sh "bin/rails cucumber"
-  raise unless
-    system("bin/rubocop") &
-    system("bin/brakeman") &
-    system("bin/erblint --lint-all") &
-    system("pnpm lint")
 end

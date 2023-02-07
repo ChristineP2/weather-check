@@ -8,7 +8,7 @@ ruby '3.1.3'
 gem 'bootsnap', '~> 1.16.0'
 gem 'burnish_rails',
     git: 'https://github.com/ChristineP2/burnish_rails',
-    ref: 'b6dc2cc'
+    ref: '336a2ce'
 gem 'faraday', '~> 2.7.4'
 gem 'pg', '~> 1.4.5'
 gem 'puma', '~> 6.0.2'
@@ -57,7 +57,6 @@ group :test do
   gem 'capybara-lockstep'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
-  gem 'database_cleaner-redis'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'webmock'

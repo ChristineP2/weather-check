@@ -1,6 +1,7 @@
-@import "themes/darkly_variables";
+@import "theme/variables";
 @import "bulma/bulma.sass";
-@import "themes/darkly_overrides";
+@import "theme/overrides";
 
 @import "base";
 @import "a11y";
+@import "simple_form";

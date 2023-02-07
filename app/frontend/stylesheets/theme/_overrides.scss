@@ -101,6 +101,8 @@ a {
 .card {
   $card-border-color: color.adjust($grey-darker, $lightness: 5%);
 
+  display: flex;
+  flex-direction: row;
   box-shadow: none;
   border: $border-width solid $card-border-color;
   background-color: $grey-darker;
@@ -127,6 +129,11 @@ a {
     border-width: $border-width;
     border-color: $card-border-color;
   }
+}
+
+
+.weather {
+  height: 100%
 }
 
 .tag {
@@ -208,6 +215,12 @@ body > .navbar,
   }
 }
 
+.is-info,
+.panel.is-info .panel-heading {
+  color: $grey-darker !important
+}
+
+/* stylelint-disable no-descending-specificity */
 .panel-block,
 .panel-heading,
 .panel-tabs {
@@ -218,6 +231,7 @@ body > .navbar,
   }
 }
 
+/* stylelint-enable no-descending-specificity */
 .panel-block:hover {
   color: $link-hover;
 

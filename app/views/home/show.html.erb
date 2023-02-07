@@ -1,0 +1,29 @@
+<%= render partial: 'form', locals: { object: @location } %>
+<% if @weather %>
+  <h2 class="subtitle is-size-3"><%= @location %></h2>
+  <div class="tabs is-primary is-medium">
+    <ul>
+      <% Weather::FORECAST_TYPES.each do |time| %>
+        <li id="<%= time %>-tab">
+          <a><%= t(".weather.#{time}") %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="container section">
+    <% Weather::FORECAST_TYPES.each do |time| %>
+      <section id="<%= time %>-content" class="panel tab-content">
+        <p class="panel-heading">
+          <%= t(".weather.#{time}") %>
+        </p>
+        <div class="panel-block">
+          <%= render partial: 'forecast',
+                     locals:  {
+                       time:    time,
+                       weather: @weather
+                     } %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+<% end %>

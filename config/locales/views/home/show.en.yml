@@ -1,0 +1,10 @@
+en:
+  home:
+    show:
+      title: Check Your Weather
+      form: Address
+      form_instructions: Please enter your address to look up the weather.
+      weather:
+        future: Next 10 days
+        past: Yesterday
+        present: Today

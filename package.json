@@ -3,8 +3,8 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "lint": "npm-run-all -c lint:*",
-    "lint:js": "eslint 'app/{components,frontend,javascript}/**/*.{js,jsx}'",
-    "lint:css": "stylelint 'app/{components,frontend,assets/stylesheets}/**/*.{css,scss}'",
+    "lint:js": "eslint --fix 'app/{components,frontend,javascript}/**/*.{js,jsx}'",
+    "lint:css": "stylelint --fix 'app/{components,frontend,assets/stylesheets}/**/*.{css,scss}'",
     "start": "concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0' 'bin/vite dev'",
     "vite": "bin/vite dev"
   },

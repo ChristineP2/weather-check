@@ -14,10 +14,3 @@ RSpec.shared_examples_for('a WeatherAPI Call regarding the') do |prefix|
     expect(subject.send("#{prefix}_params")).to have_key(:key)
   end
 end
-
-# it_behaves_like 'a dated WeatherAPI Call'
-RSpec.shared_examples_for('a dated WeatherAPI Call') do |prefix|
-  it 'has dt in the params' do
-    expect(subject.send("#{prefix}_params")).to have_key(:dt)
-  end
-end
