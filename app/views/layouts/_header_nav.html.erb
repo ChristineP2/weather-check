@@ -1,31 +1,24 @@
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a id="logo" class="navbar-item" href="/">
+    <a id="logo" class="navbar-item has-text-grey-darker" href="/">
       <%= app_title %>
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+    <!--    <a role="button" class="navbar-burger has-text-grey-darker" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">-->
+    <!--      <span aria-hidden="true"></span>-->
+    <!--      <span aria-hidden="true"></span>-->
+    <!--      <span aria-hidden="true"></span>-->
+    <!--    </a>-->
   </div>
 
-  <div id="header_nav" class="navbar-menu">
-    <div class="navbar-start">
-      <%= sanitize(render_navigation(renderer: :bulma_main_nav, level: 1..Float::INFINITY, expand_all: true)) %>
-    </div>
+  <div id="header_nav" class="navbar-menu has-text-grey-darker">
+    <!--    <div class="navbar-start has-text-grey-darker">-->
+    <%#= sanitize(render_navigation(renderer: :bulma_main_nav, level: 1..Float::INFINITY, expand_all: true)) %>
+    <!--    </div>-->
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
+      <div class="navbar-item has-text-grey-darker">
+        Current Time: <%= l(Time.current, format: :long) %>
       </div>
     </div>
   </div>

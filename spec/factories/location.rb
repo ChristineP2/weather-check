@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :weather_location do
+  factory :location do
     address { Faker::Address.street_address }
     zip_code { Faker::Address.zip_code }
 

@@ -1,0 +1,48 @@
+<div class="panel is-info">
+  <h2 class="panel-heading">
+    <%= t('home.show.form') %>
+  </h2>
+  <div class="box">
+    <%= simple_form_for(
+          object,
+          {
+            wrapper: :horizontal_form,
+            as:      :location,
+            method:  :get,
+            url:     home_path,
+            html:    {
+              class: 'horizontal-form-wrapper'
+            }
+          }
+        ) do |f| %>
+      <% if object.errors.any? %>
+        <article id="error_explanation" class="message is-danger">
+          <div class="message-header">
+            <%= t('errors.messages.form_errors', count: object.errors.count) %>
+            The form contains <%= pluralize(object.errors.count, 'error') %>.
+          </div>
+          <ul class="message-body">
+            <% object.errors.each do |msg| %>
+              <li><%= msg[1] %></li>
+            <% end %>
+          </ul>
+        </article>
+      <% end %>
+
+      <div class="columns">
+        <div class="column">
+          <div class="container">
+            <div class="field-group">
+              <% object.class.modify_keys.each do |key| %>
+                <%= f.input(key, object.field_opts(key)) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="column is-aligned-bottom">
+          <%= f.button :submit, t('actions.submit'), class: 'is-info' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

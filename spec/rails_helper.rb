@@ -60,3 +60,49 @@ RSpec.configure do |config|
     end
   end
 end
+
+# rubocop:disable Metrics/MethodLength
+
+def mock_api_response
+  [
+    200,
+    { 'Content-Type': 'application/json' },
+    mock_forecast_response
+  ]
+end
+
+# FIXME: Create shared mock data
+def mock_forecast_response
+  {
+    'forecast' => {
+      'forecastday' => [
+        {
+          'date' => '2023-02-07',
+          'day'  => {
+            'avgtemp_c'            => 12.0,
+            'avgtemp_f'            => 53.6,
+            'condition'            => {
+              'code' => 1000,
+              'icon' => '//cdn.weatherapi.com/weather/64x64/day/113.png',
+              'text' => 'Sunny'
+            },
+            'daily_chance_of_rain' => '10',
+            'daily_chance_of_snow' => '0',
+            'daily_will_it_rain'   => false,
+            'daily_will_it_snow'   => false,
+            'maxtemp_c'            => 15.0,
+            'maxtemp_f'            => 59.0,
+            'mintemp_c'            => 9.0,
+            'mintemp_f'            => 48.2,
+            'totalprecip_mm'       => 10,
+            'totalprecip_in'       => 0.2,
+            'totalsnow_cm'         => 10.0
+          }
+        }
+        # Additional forecast data for other days
+      ]
+    }
+  }
+end
+
+# rubocop:enable Metrics/MethodLength

@@ -1,0 +1,19 @@
+en:
+  a11y:
+    actions:
+      skip_to_content: Skip to content
+    settings:
+      font_family: Font Family
+      font_families:
+        open_sans: Open Sans
+        inter: Inter
+        andika: Andika
+        visual_impairment: Tiresias
+        dyslexia: OpenDyslexic
+      font_setting: Font Settings
+      font_settings:
+        smaller: Smaller
+        larger: Larger
+        underlined: Links Underline
+        readable: Readable
+        default: Default Font

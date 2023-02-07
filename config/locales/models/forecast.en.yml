@@ -1,0 +1,16 @@
+en:
+  activemodel:
+    models:
+      forecast: Forecast
+    errors:
+      forecast:
+        not_in_us: Please provide a ZIP code within the United States.
+    attributes:
+      forecast: &forecast_attr_set
+        avg_temp: Average Temperature
+        min_temp: 'Low:'
+        max_temp: 'High:'
+        odds_of_rain: chance of rain
+        odds_of_snow: chance of snow
+        total_precipitation: of rain
+        total_snowfall: of snow

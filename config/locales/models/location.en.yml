@@ -1,12 +1,12 @@
 en:
   activemodel:
     models:
-      weather_location: Location
+      location: Location
     errors:
-      weather_location:
+      location:
         not_in_us: Please provide a ZIP code within the United States.
     attributes:
-      weather_location: &weather_location_attr_set
+      location: &location_attr_set
         address: Street Address
         city: City
         country_alpha2: Country
