@@ -15,6 +15,9 @@
       <section id="<%= time %>-content" class="panel tab-content">
         <p class="panel-heading">
           <%= t(".weather.#{time}") %>
+          <% if @weather.send("#{time}_cached?".to_sym) %>
+            <span class="is-size-7 has-text-success"><%= t('.cached') %></span>
+          <% end %>
         </p>
         <div class="panel-block">
           <%= render partial: 'forecast',

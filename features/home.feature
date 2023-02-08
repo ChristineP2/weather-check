@@ -8,21 +8,3 @@ Feature: Show weather information
     When the user enters an address and clicks submit
     Then they should see the location entered
     And they should see the weather tabs
-#    And they should see the weather information for Today
-
-
-#  Scenario: Show Yesterday's weather information
-#    Given a user is on the home page
-#    When the user enters an address and clicks submit
-#    Then they should see the location entered
-#    And they should see the weather tabs
-#    And they click on the past tab
-#    And they should see past weather information
-#
-#  Scenario: Show the weather forecast
-#    Given a user is on the home page
-#    When the user enters an address and clicks submit
-#    Then they should see the location entered
-#    And they should see the weather tabs
-#    And they click on the future tab
-#    And they should see the Forecast

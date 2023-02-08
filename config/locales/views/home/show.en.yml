@@ -8,3 +8,4 @@ en:
         future: Next 10 days
         past: Yesterday
         present: Today
+      cached: cached
