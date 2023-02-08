@@ -25,15 +25,22 @@ class WeatherPresenter < ApplicationPresenter
     'columns is-multiline' if forecasts(time).count > 1
   end
 
-  def past
-    @past ||= make_presentable(to_model.past)
-  end
+  Weather::FORECAST_TYPES.each do |time|
+    #   @method past
+    #   @method present
+    #   @method future
+    #   @method past_cached?
+    #   @method present_cached?
+    #   @method future_cached?
 
-  def present
-    @present ||= make_presentable(to_model.present)
-  end
+    delegate "#{time}_cached?".to_sym, to: :to_model
 
-  def future
-    @future ||= make_presentable(to_model.future)
+    define_method(time) do
+      if instance_variable_defined?("@#{time}")
+        return instance_variable_get("@#{time}")
+      end
+
+      instance_variable_set("@#{time}", make_presentable(to_model.send(time)))
+    end
   end
 end

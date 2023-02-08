@@ -15,24 +15,34 @@ class WeatherAPI
     end
   end
 
-  def current
-    @current ||= connection.get('current.json', current_params)
-  end
+  Weather::FORECAST_TYPES.each do |time|
+    #   @method past
+    #   @method present
+    #   @method future
+    #   @method past_cached?
+    #   @method present_cached?
+    #   @method future_cached?
 
-  def present
-    @present ||= connection.get('forecast.json', current_params)
-  end
+    instance_variable_set("@#{time}_cached", true)
 
-  def future
-    @future ||= connection.get('forecast.json', future_params)
-  end
+    define_method time do
+      Rails.cache.fetch([zip_code, time], expires_in: 30.minutes) do
+        instance_variable_set("@#{time}_cached", false)
+        connection.get('forecast.json', send("#{time}_params"))
+      end
+    end
 
-  def past
-    @past ||= connection.get('forecast.json', past_params)
+    define_method("#{time}_cached?".to_sym) do
+      if instance_variable_defined?("@#{time}_cached")
+        return instance_variable_get("@#{time}_cached")
+      end
+
+      Rails.cache.exist?([zip_code, time])
+    end
   end
 
   def future_params
-    current_params.merge(
+    base_params.merge(
       {
         days: 10
       }
@@ -40,7 +50,7 @@ class WeatherAPI
   end
 
   def past_params
-    current_params.merge(
+    base_params.merge(
       {
         dt: I18n.l(Date.yesterday.to_date, format: :default)
       }
@@ -48,14 +58,10 @@ class WeatherAPI
   end
 
   def present_params
-    current_params.merge(
-      {
-        dt: I18n.l(Date.current, format: :default)
-      }
-    )
+    base_params
   end
 
-  def current_params
+  def base_params
     {
       key: Secrets.weather_api_key,
       q:   zip_code

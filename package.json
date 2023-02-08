@@ -9,7 +9,7 @@
     "vite": "bin/vite dev"
   },
   "engines": {
-    "node": ">=19.5.0",
+    "node": ">=19.6.0",
     "pnpm": ">=7.26.3"
   },
   "private": "true",
